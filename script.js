@@ -1,3 +1,4 @@
+
 async function getProducts(page = 1) {
     const response = await fetch(`https://www.handrailindustries.com.au/products.json?page=${page}`);
     const data = await response.json();
@@ -15,7 +16,11 @@ const copyEmailButton = document.getElementById('copy-email');
 const clearCartButton = document.getElementById('clear-cart');
 const surnameInput = document.getElementById('surname');
 
+// Add this after clearCartButton is defined
+console.log('clearCartButton element:', clearCartButton);
+
 async function renderProducts() {
+    console.log('renderProducts function called'); // Add this
     productsTable.innerHTML = ''; // Clear existing products
     const products = await getProducts(4); // Fetch products from page 4
     products.forEach(product => {
@@ -31,6 +36,7 @@ async function renderProducts() {
 }
 
 function updateCart() {
+    console.log('updateCart function called'); // Add this
     let total = 0;
     cartItems.innerHTML = '';
     const checkboxes = document.querySelectorAll('#products-table input[type="checkbox"]:checked');
@@ -50,6 +56,7 @@ function updateCart() {
 }
 
 function copyEmailToClipboard() {
+    console.log('copyEmailToClipboard function called'); // Add this
     const surname = surnameInput.value;
     if (!surname) {
         alert('Please enter your surname.');
@@ -82,6 +89,7 @@ Total: ${totalPrice.innerText}`;
 }
 
 function clearCartAndResetPage() {
+    console.log('clearCartAndResetPage function called'); // Add this
     // Uncheck all checkboxes
     const checkboxes = document.querySelectorAll('#products-table input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
@@ -105,5 +113,7 @@ productsTable.addEventListener('change', updateCart);
 productsTable.addEventListener('input', updateCart); // Listen for input changes on quantity fields
 copyEmailButton.addEventListener('click', copyEmailToClipboard);
 clearCartButton.addEventListener('click', clearCartAndResetPage);
+
+console.log('Event listeners attached'); // Add this
 
 renderProducts();

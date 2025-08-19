@@ -12,6 +12,7 @@ const productsTable = document.getElementById('products-table').getElementsByTag
 const cartItems = document.getElementById('cart-items');
 const totalPrice = document.getElementById('total-price');
 const copyEmailButton = document.getElementById('copy-email');
+const clearCartButton = document.getElementById('clear-cart');
 const surnameInput = document.getElementById('surname');
 
 async function renderProducts() {
@@ -80,8 +81,29 @@ Total: ${totalPrice.innerText}`;
     });
 }
 
+function clearCartAndResetPage() {
+    // Uncheck all checkboxes
+    const checkboxes = document.querySelectorAll('#products-table input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+
+    // Reset all quantity inputs to 1
+    const quantityInputs = document.querySelectorAll('.quantity');
+    quantityInputs.forEach(input => {
+        input.value = 1;
+    });
+
+    // Clear surname input
+    surnameInput.value = '';
+
+    // Update cart display (this will also reset total price)
+    updateCart();
+}
+
 productsTable.addEventListener('change', updateCart);
 productsTable.addEventListener('input', updateCart); // Listen for input changes on quantity fields
 copyEmailButton.addEventListener('click', copyEmailToClipboard);
+clearCartButton.addEventListener('click', clearCartAndResetPage);
 
 renderProducts();

@@ -1,0 +1,76 @@
+
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+}
+
+.products {
+    width: 70%;
+    padding-right: 20px;
+}
+
+.cart {
+    width: 30%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+.cart-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    max-width: 300px;
+}
+
+img {
+    max-width: 300px;
+}
+
+.total {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.customer-details {
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.email-note {
+    font-size: 0.9em;
+    color: #666;
+}
+
+input[type="number"] {
+    width: 50px;
+}
